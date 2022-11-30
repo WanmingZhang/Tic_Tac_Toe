@@ -18,16 +18,14 @@ struct GameModeView: View {
     let spacer_3 = 100.0
     let cornerRadius = 25.0
     let borderLineWidth = 5.0
-    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont.titleFont ?? UIFont.systemFont(ofSize: 36)]
+        }
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
-                    HStack {
-                        Text("Tic Tac Toe")
-                            .font(.titleFont)
-                    }
-                    Spacer()
+                    Spacer(minLength: spacer_3)
                     HStack {
                         Spacer(minLength: spacer_1)
                         LazyVStack(alignment: .center) {
@@ -35,13 +33,13 @@ struct GameModeView: View {
                             ForEach(Mode.allCases, id: \.rawValue) { mode in
                                 let linkText = mode.rawValue
                                 let fontColor = mode == .onePlayer ? Color.blue : Color.purple
+                                
                                 NavigationLink(destination: GameSetupView()) {
                                     VStack {
                                         Text(linkText)
                                             .foregroundColor(fontColor)
                                             .font(.mediumBodyFont)
                                     }
-                                    
                                 }
                                 Spacer(minLength: spacer_2)
                             }
@@ -57,6 +55,8 @@ struct GameModeView: View {
                     Spacer()
                 }
             }
+            .navigationBarTitle("Tic Tac Toe").font(.titleFont)
+            .edgesIgnoringSafeArea(.top)
             .navigationBarBackButtonHidden(true)
             .background(Color.board_bg_color.ignoresSafeArea())
 
@@ -69,3 +69,6 @@ struct GameModeView_Previews: PreviewProvider {
         GameModeView()
     }
 }
+
+
+

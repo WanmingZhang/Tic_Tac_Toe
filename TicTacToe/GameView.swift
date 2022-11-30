@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @StateObject private var viewModel = GameViewModel()
     
     var body: some View {
@@ -41,8 +42,22 @@ struct GameView: View {
                 }
             }
         }
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
         .background(Color.board_bg_color.ignoresSafeArea())
-        
+        .navigationBarItems(leading: Button(action: {
+            self.mode.wrappedValue.dismiss()
+        }, label: {
+            Text("BACK").font(.mediumBodyFont)
+        }), trailing: Button(action: {
+            //
+        }, label: {
+            Button {
+                viewModel.resetGame()
+            } label: {
+                Text("NEW").font(.mediumBodyFont)
+            }
+        }))
     }
 
     
