@@ -14,7 +14,7 @@ class GameViewModel: ObservableObject {
     @Published var isBoardDisabled = false
     @Published var alertItem: AlertItem?
     
-    func processPlayerMove(at i: Int) {
+    func processPlayerMove(at i: Int, with difficulty: AIDifficulty) {
         guard isOccupied(moves, i) == false else { return }
         moves[i] = Move(player: .human, boardIndex: i)
         if checkForWinning(.human, moves) {
@@ -29,7 +29,7 @@ class GameViewModel: ObservableObject {
         }
         isBoardDisabled = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-            let position = determineComputerMoves(self.moves)
+            let position = determineComputerMoves(self.moves, difficulty)
             moves[position] = Move(player: .computer, boardIndex: position)
             isBoardDisabled = false
             if checkForWinning(.computer, moves) {
@@ -57,7 +57,57 @@ class GameViewModel: ObservableObject {
      * If AI cannot block, take middle square
      * If AI cannot take middle square, take random available square
      */
-    func determineComputerMoves(_ moves: [Move?]) -> Int {
+    
+    func determineComputerMoves(_ moves: [Move?], _ difficulty: AIDifficulty) -> Int {
+        switch difficulty {
+        case .easy:
+            return computerMovesForEasyAI(moves)
+        case .medium:
+            return computerMovesForMediumAI(moves)
+        case .hard:
+            return computerMovesForHardAI(moves)
+        }
+    }
+    
+    func computerMovesForEasyAI(_ moves: [Move?]) -> Int {
+        //AI just takes random available square
+        var position = Int.random(in: 0..<9)
+        while isOccupied(moves, position) == true {
+            position = Int.random(in: 0..<9)
+        }
+        return position
+    }
+    
+    func computerMovesForMediumAI(_ moves: [Move?]) -> Int {
+        //If AI can win, then win
+        let winning: Set<Set<Int>> = [[0,1,2], [3,4,5], [6,7,8], [0,4,8], [2,4,6], [0,3,6], [1,4,7], [2,5,8]]
+        let computerMoves = moves.compactMap { $0 }.filter { $0.player == .computer }
+        let computerPos = Set(computerMoves.map { $0.boardIndex })
+        
+        for pattern in winning {
+            let winningPos = pattern.subtracting(computerPos)
+            if winningPos.count == 1 {
+                if !isOccupied(moves, winningPos.first!) {
+                    return winningPos.first!
+                }
+            }
+        }
+        
+        //If AI cannot win, take middle square
+        let centerSquare = 4
+        if !isOccupied(moves, centerSquare) {
+            return centerSquare
+        }
+        
+        //If AI cannot take middle square, just take random available square
+        var position = Int.random(in: 0..<9)
+        while isOccupied(moves, position) == true {
+            position = Int.random(in: 0..<9)
+        }
+        return position
+    }
+ 
+    func computerMovesForHardAI(_ moves: [Move?]) -> Int {
         //If AI can win, then win
         let winning: Set<Set<Int>> = [[0,1,2], [3,4,5], [6,7,8], [0,4,8], [2,4,6], [0,3,6], [1,4,7], [2,5,8]]
         let computerMoves = moves.compactMap { $0 }.filter { $0.player == .computer }

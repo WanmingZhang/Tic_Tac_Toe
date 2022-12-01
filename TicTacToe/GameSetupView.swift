@@ -66,7 +66,7 @@ struct GameSetupView: View {
         }), trailing: Button(action: {
             //
         }, label: {
-            NavigationLink(destination: GameView()) {
+            NavigationLink(destination: GameView(difficulty)) {
                 Text("Start").font(.mediumBodyFont)
                      }
         }))
@@ -77,6 +77,7 @@ struct GameSetupView: View {
         let fontColor = self.fontColorBy(difficulty)
         let button =
         Button(action: {
+            self.difficulty = difficulty
             print(difficultyLevel)
         }) {
             Text(difficultyLevel)

@@ -11,6 +11,11 @@ struct GameView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @StateObject private var viewModel = GameViewModel()
+    @State private var difficulty: AIDifficulty
+    
+    init(_ difficulty: AIDifficulty) {
+        _difficulty = State(initialValue: difficulty)
+    }
     
     var body: some View {
         ZStack {
@@ -25,7 +30,7 @@ struct GameView: View {
                                 
                             }
                             .onTapGesture {
-                                viewModel.processPlayerMove(at: i)
+                                viewModel.processPlayerMove(at: i, with: difficulty)
                             }
                         }
                     }
@@ -66,7 +71,8 @@ struct GameView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        let defaultDifficulty = AIDifficulty.hard
+        GameView(defaultDifficulty)
     }
 }
 
