@@ -21,6 +21,7 @@
 		C7D6C6432935837A003CBDBE /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D6C6422935837A003CBDBE /* GameModeView.swift */; };
 		C7D6C6452935845A003CBDBE /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D6C6442935845A003CBDBE /* Color+Extensions.swift */; };
 		C7D6C647293592C6003CBDBE /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D6C646293592C6003CBDBE /* Font+Extensions.swift */; };
+		C7F492562939923E0071CD00 /* AILevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F492552939923E0071CD00 /* AILevel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		C7D6C6422935837A003CBDBE /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
 		C7D6C6442935845A003CBDBE /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C7D6C646293592C6003CBDBE /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		C7F492552939923E0071CD00 /* AILevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AILevel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				C7D6C63C29342F2F003CBDBE /* AlertItem.swift */,
 				C7D6C6442935845A003CBDBE /* Color+Extensions.swift */,
 				C7D6C646293592C6003CBDBE /* Font+Extensions.swift */,
+				C7F492552939923E0071CD00 /* AILevel.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				C7D6C63B292F0537003CBDBE /* Move.swift in Sources */,
 				C7D6C63F29344D89003CBDBE /* GameViewModel.swift in Sources */,
 				C7D6C641293582B9003CBDBE /* GameSetupView.swift in Sources */,
+				C7F492562939923E0071CD00 /* AILevel.swift in Sources */,
 				C7B24775292EEFFE0066427D /* TicTacToeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,53 +7,54 @@
 
 import SwiftUI
 
-enum AIDifficulty: String, CaseIterable {
-    case easy = "easy"
-    case medium = "medium"
-    case hard = "hard"
-}
-
 struct GameSetupView: View {
-    let spacer_1 = 24.0
-    let spacer_2 = 15.0
-    let spacer_3 = 100.0
+    let spacer = 24.0
     let cornerRadius = 25.0
     let borderLineWidth = 5.0
-    @State private var difficulty: AIDifficulty = .hard
+    
+    @State private var difficulty: AILevel = .hard
     @State private var name: String = "Name"
     @State private var shouldStart: Bool = false
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    let columns = Array(repeating: GridItem(.flexible()), count: 3)
     
     var body: some View {
         ZStack {
             VStack {
-                Spacer(minLength: 1.5 * spacer_3)
+                Spacer(minLength: 150)
                 HStack {
-                    Spacer(minLength: spacer_2)
+                    Spacer(minLength: spacer)
                     VStack {
-                        Spacer(minLength: spacer_2)
+                        Spacer(minLength: spacer)
                         Text("One Player").font(.smallBodyFont)
+                        Spacer(minLength: spacer)
                         VStack(alignment: .center) {
                             TextField("Name", text: $name)
                             TextField("Name", text: $name)
                         }
-                        LazyHStack(alignment: .center) {
-                            Spacer(minLength: spacer_2)
-                            ForEach(AIDifficulty.allCases, id: \.rawValue) { difficulty in
-                                self.buildButton(from: difficulty)
+                        Spacer(minLength: spacer)
+                        LazyVGrid(columns: columns) {
+                            ForEach(0..<3) { i in
+                                ZStack {
+                                    self.buildButton(from: AILevel.allCases[i])
+                                    
+                                }
+                                .onTapGesture {
+                                    
+                                }
                             }
-                            Spacer(minLength: spacer_2)
                         }
+                        Spacer(minLength: spacer)
                     }
                     .background(Color.orange.opacity(0.25))
                     .overlay(
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(Color.black, lineWidth: borderLineWidth)
                     )
-                    Spacer(minLength: spacer_2)
+                    Spacer(minLength: spacer)
                 }
-                Spacer(minLength: 1.5 * spacer_3)
+                Spacer(minLength: 150)
             }
         }
         .edgesIgnoringSafeArea(.top)
@@ -72,24 +73,27 @@ struct GameSetupView: View {
         }))
     }
     
-    func buildButton(from difficulty: AIDifficulty) -> some View {
+    func buildButton(from difficulty: AILevel) -> some View {
         let difficultyLevel = difficulty.rawValue
         let fontColor = self.fontColorBy(difficulty)
+        
         let button =
         Button(action: {
             self.difficulty = difficulty
             print(difficultyLevel)
         }) {
             Text(difficultyLevel)
-                .padding()
+                .padding(10)
                 .foregroundColor(fontColor)
                 .font(.smallBodyFont)
         }
+        .buttonStyle(ToggleButtonStyle())
+        
         return button
     }
     
     
-    func fontColorBy(_ difficulty: AIDifficulty) -> Color {
+    func fontColorBy(_ difficulty: AILevel) -> Color {
         switch difficulty {
         case .easy:
             return Color.mint
@@ -104,5 +108,16 @@ struct GameSetupView: View {
 struct GameSetupView_Previews: PreviewProvider {
     static var previews: some View {
         GameSetupView()
+    }
+}
+
+struct ToggleButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(configuration.isPressed ? Color.white : Color.clear)
+            .background(configuration.isPressed ? Color.white : Color.clear)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            
     }
 }

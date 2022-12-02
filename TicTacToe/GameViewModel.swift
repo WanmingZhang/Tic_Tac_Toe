@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 
 class GameViewModel: ObservableObject {
-    let columns = Array(repeating: GridItem(.flexible()), count: 3)
+    
     @Published var moves: [Move?] = Array(repeating: nil, count: 9)
     @Published var isBoardDisabled = false
     @Published var alertItem: AlertItem?
     
-    func processPlayerMove(at i: Int, with difficulty: AIDifficulty) {
+    func processPlayerMove(at i: Int, with difficulty: AILevel) {
         guard isOccupied(moves, i) == false else { return }
         moves[i] = Move(player: .human, boardIndex: i)
         if checkForWinning(.human, moves) {
@@ -58,7 +58,7 @@ class GameViewModel: ObservableObject {
      * If AI cannot take middle square, take random available square
      */
     
-    func determineComputerMoves(_ moves: [Move?], _ difficulty: AIDifficulty) -> Int {
+    func determineComputerMoves(_ moves: [Move?], _ difficulty: AILevel) -> Int {
         switch difficulty {
         case .easy:
             return computerMovesForEasyAI(moves)

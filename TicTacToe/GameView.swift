@@ -11,9 +11,10 @@ struct GameView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @StateObject private var viewModel = GameViewModel()
-    @State private var difficulty: AIDifficulty
+    @State private var difficulty: AILevel
+    let columns = Array(repeating: GridItem(.flexible()), count: 3)
     
-    init(_ difficulty: AIDifficulty) {
+    init(_ difficulty: AILevel) {
         _difficulty = State(initialValue: difficulty)
     }
     
@@ -22,7 +23,7 @@ struct GameView: View {
             GeometryReader { geometry in
                 VStack {
                     Spacer()
-                    LazyVGrid(columns: viewModel.columns) {
+                    LazyVGrid(columns: columns) {
                         ForEach(0..<9) { i in
                             ZStack {
                                 gameSquare()
@@ -71,7 +72,7 @@ struct GameView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let defaultDifficulty = AIDifficulty.hard
+        let defaultDifficulty = AILevel.hard
         GameView(defaultDifficulty)
     }
 }
