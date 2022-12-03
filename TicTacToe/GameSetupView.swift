@@ -13,8 +13,10 @@ struct GameSetupView: View {
     let borderLineWidth = 5.0
     
     @State private var difficulty: AILevel = .hard
+    @State private var didTap = Array(repeating: false, count: AILevel.allCases.count)
+    
     @State private var name: String = "Name"
-    @State private var shouldStart: Bool = false
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
@@ -37,11 +39,7 @@ struct GameSetupView: View {
                         LazyVGrid(columns: columns) {
                             ForEach(0..<3) { i in
                                 ZStack {
-                                    self.buildButton(from: AILevel.allCases[i])
-                                    
-                                }
-                                .onTapGesture {
-                                    
+                                    self.buildButton(at: i)
                                 }
                             }
                         }
@@ -73,22 +71,33 @@ struct GameSetupView: View {
         }))
     }
     
-    func buildButton(from difficulty: AILevel) -> some View {
+    func buildButton(at idx: Int) -> some View {
+        let difficulty = AILevel.allCases[idx]
         let difficultyLevel = difficulty.rawValue
         let fontColor = self.fontColorBy(difficulty)
         
         let button =
         Button(action: {
             self.difficulty = difficulty
+            for i in 0..<AILevel.allCases.count {
+                if i == idx {
+                    didTap[i] = true
+                } else {
+                    didTap[i] = false
+                }
+            }
             print(difficultyLevel)
         }) {
             Text(difficultyLevel)
                 .padding(10)
                 .foregroundColor(fontColor)
                 .font(.smallBodyFont)
+                .overlay(RoundedRectangle(cornerRadius: 25)
+                    .stroke(didTap[idx] == true ? .white : .clear,
+                    lineWidth: 3))
         }
-        .buttonStyle(ToggleButtonStyle())
-        
+        .background(didTap[idx] == true ? .yellow : .clear, in: RoundedRectangle(cornerRadius: cornerRadius))
+
         return button
     }
     
@@ -111,13 +120,3 @@ struct GameSetupView_Previews: PreviewProvider {
     }
 }
 
-struct ToggleButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(configuration.isPressed ? Color.white : Color.clear)
-            .background(configuration.isPressed ? Color.white : Color.clear)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-            
-    }
-}
