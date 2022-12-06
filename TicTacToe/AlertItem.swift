@@ -5,7 +5,6 @@
 //  Created by wanming zhang on 11/27/22.
 //
 
-import Foundation
 import SwiftUI
 
 struct AlertItem: Identifiable {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7AE1362293EB2AC005BDF5A /* UserNameTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE1361293EB2AC005BDF5A /* UserNameTextFields.swift */; };
 		C7B24775292EEFFE0066427D /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B24774292EEFFE0066427D /* TicTacToeApp.swift */; };
 		C7B24777292EEFFE0066427D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B24776292EEFFE0066427D /* GameView.swift */; };
 		C7B24779292EEFFF0066427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B24778292EEFFF0066427D /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C7AE1361293EB2AC005BDF5A /* UserNameTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameTextFields.swift; sourceTree = "<group>"; };
 		C7B24771292EEFFE0066427D /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7B24774292EEFFE0066427D /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		C7B24776292EEFFE0066427D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				C7B2477B292EEFFF0066427D /* Preview Assets.xcassets */,
+				C7AE1361293EB2AC005BDF5A /* UserNameTextFields.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				C7D6C63B292F0537003CBDBE /* Move.swift in Sources */,
 				C7D6C63F29344D89003CBDBE /* GameViewModel.swift in Sources */,
 				C7D6C641293582B9003CBDBE /* GameSetupView.swift in Sources */,
+				C7AE1362293EB2AC005BDF5A /* UserNameTextFields.swift in Sources */,
 				C7F492562939923E0071CD00 /* AILevel.swift in Sources */,
 				C7B24775292EEFFE0066427D /* TicTacToeApp.swift in Sources */,
 			);

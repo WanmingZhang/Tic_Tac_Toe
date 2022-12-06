@@ -54,14 +54,14 @@ struct GameView: View {
         .navigationBarItems(leading: Button(action: {
             self.mode.wrappedValue.dismiss()
         }, label: {
-            Text("BACK").font(.mediumBodyFont)
+            Text("BACK").font(.bodyFont30)
         }), trailing: Button(action: {
             //
         }, label: {
             Button {
                 viewModel.resetGame()
             } label: {
-                Text("NEW").font(.mediumBodyFont)
+                Text("NEW").font(.bodyFont30)
             }
         }))
     }

@@ -15,8 +15,6 @@ struct GameSetupView: View {
     @State private var difficulty: AILevel = .hard
     @State private var didTap = Array(repeating: false, count: AILevel.allCases.count)
     
-    @State private var name: String = "Name"
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
@@ -28,14 +26,11 @@ struct GameSetupView: View {
                 HStack {
                     Spacer(minLength: spacer)
                     VStack {
+                        Spacer(minLength: 8)
+                        Text("One Player").font(.bodyFont24)
                         Spacer(minLength: spacer)
-                        Text("One Player").font(.smallBodyFont)
-                        Spacer(minLength: spacer)
-                        VStack(alignment: .center) {
-                            TextField("Name", text: $name)
-                            TextField("Name", text: $name)
-                        }
-                        Spacer(minLength: spacer)
+                        UserNameTextFields()
+                        Spacer(minLength: 8)
                         LazyVGrid(columns: columns) {
                             ForEach(0..<3) { i in
                                 ZStack {
@@ -61,12 +56,12 @@ struct GameSetupView: View {
         .navigationBarItems(leading: Button(action: {
             self.mode.wrappedValue.dismiss()
         }, label: {
-            Text("BACK").font(.mediumBodyFont)
+            Text("BACK").font(.bodyFont30)
         }), trailing: Button(action: {
             //
         }, label: {
             NavigationLink(destination: GameView(difficulty)) {
-                Text("Start").font(.mediumBodyFont)
+                Text("Start").font(.bodyFont30)
                      }
         }))
     }
@@ -91,7 +86,7 @@ struct GameSetupView: View {
             Text(difficultyLevel)
                 .padding(10)
                 .foregroundColor(fontColor)
-                .font(.smallBodyFont)
+                .font(.bodyFont24)
                 .overlay(RoundedRectangle(cornerRadius: 25)
                     .stroke(didTap[idx] == true ? .white : .clear,
                     lineWidth: 3))

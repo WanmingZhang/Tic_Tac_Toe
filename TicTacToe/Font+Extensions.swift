@@ -10,8 +10,9 @@ import UIKit
 
 extension Font {
     static let titleFont = Font.custom("ChalkboardSE-Bold", size: 36)
-    static let smallBodyFont = Font.custom("ChalkboardSE-Regular", size: 24)
-    static let mediumBodyFont = Font.custom("ChalkboardSE-Regular", size: 30)
+    static let bodyFont20 = Font.custom("ChalkboardSE-Regular", size: 20)
+    static let bodyFont24 = Font.custom("ChalkboardSE-Regular", size: 24)
+    static let bodyFont30 = Font.custom("ChalkboardSE-Regular", size: 30)
 }
 
 extension UIFont {

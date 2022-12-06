@@ -38,7 +38,7 @@ struct GameModeView: View {
                                     VStack {
                                         Text(linkText)
                                             .foregroundColor(fontColor)
-                                            .font(.mediumBodyFont)
+                                            .font(.bodyFont30)
                                     }
                                 }
                                 Spacer(minLength: spacer_2)

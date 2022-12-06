@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum Player: CaseIterable {
-    case human
-    case computer
+enum Player: String, CaseIterable {
+    case human = "Player 1"
+    case computer = "Player 2"
 }
 
 struct Move {
