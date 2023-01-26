@@ -1,13 +1,13 @@
 //
-//  UserInputTextField.swift
+//  PlayerNameTextField.swift
 //  TicTacToe
 //
 //  Created by wanming zhang on 12/5/22.
 //
 
 import SwiftUI
-struct UserNameTextFields: View {
-    let descWidth = 90.0
+struct PlayerNameTextField: View {
+    let width = 90.0
     @State private var player1: String = ""
     @State private var player2: String = ""
     
@@ -19,7 +19,7 @@ struct UserNameTextFields: View {
                     Text (
                         player.rawValue == "Player 1" ? "name" : "opponent"
                     )
-                    .frame(width: descWidth, alignment: .trailing)
+                    .frame(width: width, alignment: .trailing)
                     .font(.bodyFont20)
                     
                     TextField(player.rawValue, text: player.rawValue == "Player 1" ? $player1 : $player2)
@@ -34,8 +34,6 @@ struct UserNameTextFields: View {
                             saveUerName()
                         }
                     Spacer(minLength: 24.0)
-                    
-                    
                 }
             }
         }
@@ -48,7 +46,7 @@ struct UserNameTextFields: View {
 
 struct UserNameTextFields_Previews: PreviewProvider {
     static var previews: some View {
-        UserNameTextFields()
+        PlayerNameTextField()
     }
 }
 

@@ -12,24 +12,30 @@ struct GameSetupView: View {
     let cornerRadius = 25.0
     let borderLineWidth = 5.0
     
+    @StateObject var viewModel = GameSettingsModel()
     @State private var difficulty: AILevel = .hard
     @State private var didTap = Array(repeating: false, count: AILevel.allCases.count)
+    
+    @State var playerMode: PlayerMode
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     
+    init(_ playerMode: PlayerMode) {
+        _playerMode = State(initialValue: playerMode)
+    }
     var body: some View {
         ZStack {
             VStack {
-                Spacer(minLength: 150)
+                Spacer(minLength: 200)
                 HStack {
                     Spacer(minLength: spacer)
                     VStack {
                         Spacer(minLength: 8)
-                        Text("One Player").font(.bodyFont24)
+                        Text(playerMode.rawValue).font(.bodyFont24)
                         Spacer(minLength: spacer)
-                        UserNameTextFields()
+                        PlayerNameTextField()
                         Spacer(minLength: 8)
                         LazyVGrid(columns: columns) {
                             ForEach(0..<3) { i in
@@ -69,7 +75,7 @@ struct GameSetupView: View {
     func buildButton(at idx: Int) -> some View {
         let difficulty = AILevel.allCases[idx]
         let difficultyLevel = difficulty.rawValue
-        let fontColor = self.fontColorBy(difficulty)
+        let fontColor = viewModel.fontColorBy(difficulty)
         
         let button =
         Button(action: {
@@ -95,23 +101,12 @@ struct GameSetupView: View {
 
         return button
     }
-    
-    
-    func fontColorBy(_ difficulty: AILevel) -> Color {
-        switch difficulty {
-        case .easy:
-            return Color.mint
-        case .medium:
-            return Color.blue
-        case .hard:
-            return Color.purple
-        }
-    }
 }
 
 struct GameSetupView_Previews: PreviewProvider {
     static var previews: some View {
-        GameSetupView()
+        GameSetupView(.onePlayer)
     }
 }
+
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7AE1362293EB2AC005BDF5A /* UserNameTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE1361293EB2AC005BDF5A /* UserNameTextFields.swift */; };
+		C7AE1362293EB2AC005BDF5A /* PlayerNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE1361293EB2AC005BDF5A /* PlayerNameTextField.swift */; };
 		C7B24775292EEFFE0066427D /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B24774292EEFFE0066427D /* TicTacToeApp.swift */; };
 		C7B24777292EEFFE0066427D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B24776292EEFFE0066427D /* GameView.swift */; };
 		C7B24779292EEFFF0066427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B24778292EEFFF0066427D /* Assets.xcassets */; };
@@ -23,6 +23,9 @@
 		C7D6C6452935845A003CBDBE /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D6C6442935845A003CBDBE /* Color+Extensions.swift */; };
 		C7D6C647293592C6003CBDBE /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D6C646293592C6003CBDBE /* Font+Extensions.swift */; };
 		C7F492562939923E0071CD00 /* AILevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F492552939923E0071CD00 /* AILevel.swift */; };
+		C7FA4B6D2980B0DA0060D7A9 /* PlayerNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4B6C2980B0DA0060D7A9 /* PlayerNameView.swift */; };
+		C7FA4B702981ED970060D7A9 /* GameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4B6F2981ED970060D7A9 /* GameSettingsModel.swift */; };
+		C7FA4B722981EDFA0060D7A9 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4B712981EDFA0060D7A9 /* GameSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C7AE1361293EB2AC005BDF5A /* UserNameTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameTextFields.swift; sourceTree = "<group>"; };
+		C7AE1361293EB2AC005BDF5A /* PlayerNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameTextField.swift; sourceTree = "<group>"; };
 		C7B24771292EEFFE0066427D /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7B24774292EEFFE0066427D /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		C7B24776292EEFFE0066427D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -62,6 +65,9 @@
 		C7D6C6442935845A003CBDBE /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C7D6C646293592C6003CBDBE /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		C7F492552939923E0071CD00 /* AILevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AILevel.swift; sourceTree = "<group>"; };
+		C7FA4B6C2980B0DA0060D7A9 /* PlayerNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameView.swift; sourceTree = "<group>"; };
+		C7FA4B6F2981ED970060D7A9 /* GameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsModel.swift; sourceTree = "<group>"; };
+		C7FA4B712981EDFA0060D7A9 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				C7B24774292EEFFE0066427D /* TicTacToeApp.swift */,
-				C7D6C6422935837A003CBDBE /* GameModeView.swift */,
-				C7D6C640293582B9003CBDBE /* GameSetupView.swift */,
-				C7B24776292EEFFE0066427D /* GameView.swift */,
-				C7D6C63E29344D89003CBDBE /* GameViewModel.swift */,
+				C7FA4B6E2980B0FC0060D7A9 /* Views&ViewModels */,
 				C7B24778292EEFFF0066427D /* Assets.xcassets */,
 				C7B2477A292EEFFF0066427D /* Preview Content */,
 				C7D6C63A292F0537003CBDBE /* Move.swift */,
@@ -124,6 +127,7 @@
 				C7D6C6442935845A003CBDBE /* Color+Extensions.swift */,
 				C7D6C646293592C6003CBDBE /* Font+Extensions.swift */,
 				C7F492552939923E0071CD00 /* AILevel.swift */,
+				C7FA4B712981EDFA0060D7A9 /* GameSettings.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -132,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				C7B2477B292EEFFF0066427D /* Preview Assets.xcassets */,
-				C7AE1361293EB2AC005BDF5A /* UserNameTextFields.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -152,6 +155,20 @@
 				C7B24791292EEFFF0066427D /* TicTacToeUITestsLaunchTests.swift */,
 			);
 			path = TicTacToeUITests;
+			sourceTree = "<group>";
+		};
+		C7FA4B6E2980B0FC0060D7A9 /* Views&ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6C6422935837A003CBDBE /* GameModeView.swift */,
+				C7D6C640293582B9003CBDBE /* GameSetupView.swift */,
+				C7B24776292EEFFE0066427D /* GameView.swift */,
+				C7D6C63E29344D89003CBDBE /* GameViewModel.swift */,
+				C7AE1361293EB2AC005BDF5A /* PlayerNameTextField.swift */,
+				C7FA4B6C2980B0DA0060D7A9 /* PlayerNameView.swift */,
+				C7FA4B6F2981ED970060D7A9 /* GameSettingsModel.swift */,
+			);
+			path = "Views&ViewModels";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,13 +305,16 @@
 				C7B24777292EEFFE0066427D /* GameView.swift in Sources */,
 				C7D6C6432935837A003CBDBE /* GameModeView.swift in Sources */,
 				C7D6C63D29342F2F003CBDBE /* AlertItem.swift in Sources */,
+				C7FA4B6D2980B0DA0060D7A9 /* PlayerNameView.swift in Sources */,
 				C7D6C6452935845A003CBDBE /* Color+Extensions.swift in Sources */,
+				C7FA4B722981EDFA0060D7A9 /* GameSettings.swift in Sources */,
 				C7D6C63B292F0537003CBDBE /* Move.swift in Sources */,
 				C7D6C63F29344D89003CBDBE /* GameViewModel.swift in Sources */,
 				C7D6C641293582B9003CBDBE /* GameSetupView.swift in Sources */,
-				C7AE1362293EB2AC005BDF5A /* UserNameTextFields.swift in Sources */,
+				C7AE1362293EB2AC005BDF5A /* PlayerNameTextField.swift in Sources */,
 				C7F492562939923E0071CD00 /* AILevel.swift in Sources */,
 				C7B24775292EEFFE0066427D /* TicTacToeApp.swift in Sources */,
+				C7FA4B702981ED970060D7A9 /* GameSettingsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

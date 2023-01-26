@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-enum Mode: String, CaseIterable {
-    case onePlayer = "one player"
-    case twoPlayer = "two players"
-}
-
 struct GameModeView: View {
+    //@StateObject var viewModel = GameSettingsModel()
+    @State var playerMode: PlayerMode = .onePlayer
+    
     let spacer_1 = 24.0
     let spacer_2 = 15.0
     let spacer_3 = 100.0
     let cornerRadius = 25.0
     let borderLineWidth = 5.0
+    
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont.titleFont ?? UIFont.systemFont(ofSize: 36)]
         }
@@ -30,17 +29,21 @@ struct GameModeView: View {
                         Spacer(minLength: spacer_1)
                         LazyVStack(alignment: .center) {
                             Spacer(minLength: spacer_3)
-                            ForEach(Mode.allCases, id: \.rawValue) { mode in
+                            ForEach(PlayerMode.allCases, id: \.rawValue) { mode in
                                 let linkText = mode.rawValue
                                 let fontColor = mode == .onePlayer ? Color.blue : Color.purple
-                                
-                                NavigationLink(destination: GameSetupView()) {
+                                NavigationLink(destination: GameSetupView(mode)) {
                                     VStack {
                                         Text(linkText)
                                             .foregroundColor(fontColor)
                                             .font(.bodyFont30)
                                     }
                                 }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    //self.viewModel.selectPlayerMode(mode)
+                                    //self.playerMode = mode
+                                    print("......mode = \(mode.rawValue)")
+                                })
                                 Spacer(minLength: spacer_2)
                             }
                             Spacer(minLength: spacer_3)

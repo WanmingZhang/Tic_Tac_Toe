@@ -35,6 +35,7 @@ struct GameView: View {
                             }
                         }
                     }
+                    PlayerNameView()
                     Spacer()
                 }
                 .disabled(viewModel.isBoardDisabled)
