@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				C7B24774292EEFFE0066427D /* TicTacToeApp.swift */,
-				C7FA4B6E2980B0FC0060D7A9 /* Views&ViewModels */,
+				C7FA4B6E2980B0FC0060D7A9 /* ViewsAndViewModels */,
 				C7B24778292EEFFF0066427D /* Assets.xcassets */,
 				C7B2477A292EEFFF0066427D /* Preview Content */,
 				C7D6C63A292F0537003CBDBE /* Move.swift */,
@@ -157,7 +157,7 @@
 			path = TicTacToeUITests;
 			sourceTree = "<group>";
 		};
-		C7FA4B6E2980B0FC0060D7A9 /* Views&ViewModels */ = {
+		C7FA4B6E2980B0FC0060D7A9 /* ViewsAndViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				C7D6C6422935837A003CBDBE /* GameModeView.swift */,
@@ -168,7 +168,7 @@
 				C7FA4B6C2980B0DA0060D7A9 /* PlayerNameView.swift */,
 				C7FA4B6F2981ED970060D7A9 /* GameSettingsModel.swift */,
 			);
-			path = "Views&ViewModels";
+			path = ViewsAndViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
